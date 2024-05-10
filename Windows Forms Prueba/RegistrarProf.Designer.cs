@@ -1,6 +1,6 @@
 ﻿namespace Windows_Forms_Prueba
 {
-    partial class EditarProfesor
+    partial class RegistrarProf
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarProfesor));
-            ButtonSearch = new Button();
             PanelProfInfo = new Panel();
             ButtonCancel = new Button();
             ButtonSave = new Button();
@@ -42,31 +40,13 @@
             panel1 = new Panel();
             ListBTecnicas = new CheckedListBox();
             label5 = new Label();
-            BoxNewPassProf = new TextBox();
-            label3 = new Label();
-            BoxNewNameProf = new TextBox();
-            label2 = new Label();
-            LabelNameProf = new Label();
-            label1 = new Label();
-            ComboProfSearch = new ComboBox();
+            BoxPassProf = new TextBox();
+            BoxNameProf = new TextBox();
             PanelProfInfo.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // ButtonSearch
-            // 
-            ButtonSearch.BackColor = Color.Transparent;
-            ButtonSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonSearch.Location = new Point(664, 4);
-            ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(136, 31);
-            ButtonSearch.TabIndex = 2;
-            ButtonSearch.Text = "Buscar";
-            ButtonSearch.TextAlign = ContentAlignment.TopCenter;
-            ButtonSearch.UseVisualStyleBackColor = false;
-            ButtonSearch.Click += BuscarProf_Click;
             // 
             // PanelProfInfo
             // 
@@ -75,20 +55,16 @@
             PanelProfInfo.Controls.Add(panel3);
             PanelProfInfo.Controls.Add(panel2);
             PanelProfInfo.Controls.Add(panel1);
-            PanelProfInfo.Controls.Add(BoxNewPassProf);
-            PanelProfInfo.Controls.Add(label3);
-            PanelProfInfo.Controls.Add(BoxNewNameProf);
-            PanelProfInfo.Controls.Add(label2);
-            PanelProfInfo.Controls.Add(LabelNameProf);
-            PanelProfInfo.Location = new Point(-1, 39);
+            PanelProfInfo.Controls.Add(BoxPassProf);
+            PanelProfInfo.Controls.Add(BoxNameProf);
+            PanelProfInfo.Location = new Point(1, 3);
             PanelProfInfo.Name = "PanelProfInfo";
             PanelProfInfo.Size = new Size(902, 685);
-            PanelProfInfo.TabIndex = 3;
-            PanelProfInfo.Visible = false;
+            PanelProfInfo.TabIndex = 6;
             // 
             // ButtonCancel
             // 
-            ButtonCancel.Location = new Point(791, 640);
+            ButtonCancel.Location = new Point(778, 577);
             ButtonCancel.Name = "ButtonCancel";
             ButtonCancel.Size = new Size(94, 29);
             ButtonCancel.TabIndex = 13;
@@ -98,19 +74,19 @@
             // 
             // ButtonSave
             // 
-            ButtonSave.Location = new Point(691, 640);
+            ButtonSave.Location = new Point(678, 577);
             ButtonSave.Name = "ButtonSave";
             ButtonSave.Size = new Size(94, 29);
             ButtonSave.TabIndex = 12;
-            ButtonSave.Text = "Guardar";
+            ButtonSave.Text = "Registrar";
             ButtonSave.UseVisualStyleBackColor = true;
-            ButtonSave.Click += GuardarProf_Click;
+            ButtonSave.Click += RegistrarProf_Click;
             // 
             // panel3
             // 
             panel3.Controls.Add(ListBAsigTecnicas);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(442, 406);
+            panel3.Location = new Point(475, 330);
             panel3.Name = "panel3";
             panel3.Size = new Size(397, 216);
             panel3.TabIndex = 11;
@@ -135,15 +111,15 @@
             label6.ForeColor = SystemColors.ActiveCaptionText;
             label6.Location = new Point(0, 4);
             label6.Name = "label6";
-            label6.Size = new Size(257, 28);
+            label6.Size = new Size(274, 28);
             label6.TabIndex = 6;
-            label6.Text = "Asignaturas técnicas que da:";
+            label6.Text = "Asignaturas técnicas que dara:";
             // 
             // panel2
             // 
             panel2.Controls.Add(ListBAsigAcademicas);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(20, 406);
+            panel2.Location = new Point(34, 330);
             panel2.Name = "panel2";
             panel2.Size = new Size(397, 216);
             panel2.TabIndex = 10;
@@ -168,15 +144,15 @@
             label4.ForeColor = SystemColors.ActiveCaptionText;
             label4.Location = new Point(0, 4);
             label4.Name = "label4";
-            label4.Size = new Size(288, 28);
+            label4.Size = new Size(305, 28);
             label4.TabIndex = 6;
-            label4.Text = "Asignaturas academicas que da:";
+            label4.Text = "Asignaturas academicas que dara:";
             // 
             // panel1
             // 
             panel1.Controls.Add(ListBTecnicas);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(20, 178);
+            panel1.Location = new Point(34, 100);
             panel1.Name = "panel1";
             panel1.Size = new Size(478, 206);
             panel1.TabIndex = 9;
@@ -206,96 +182,35 @@
             label5.TabIndex = 7;
             label5.Text = "Técnicas del profesor:";
             // 
-            // BoxNewPassProf
+            // BoxPassProf
             // 
-            BoxNewPassProf.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            BoxNewPassProf.Location = new Point(193, 118);
-            BoxNewPassProf.Name = "BoxNewPassProf";
-            BoxNewPassProf.PasswordChar = '*';
-            BoxNewPassProf.Size = new Size(240, 32);
-            BoxNewPassProf.TabIndex = 4;
+            BoxPassProf.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            BoxPassProf.Location = new Point(338, 36);
+            BoxPassProf.Name = "BoxPassProf";
+            BoxPassProf.PasswordChar = '*';
+            BoxPassProf.PlaceholderText = "Contraseña";
+            BoxPassProf.Size = new Size(240, 32);
+            BoxPassProf.TabIndex = 4;
             // 
-            // label3
+            // BoxNameProf
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(12, 118);
-            label3.Name = "label3";
-            label3.Size = new Size(175, 28);
-            label3.TabIndex = 3;
-            label3.Text = "Nueva Contraseña:";
+            BoxNameProf.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            BoxNameProf.Location = new Point(33, 36);
+            BoxNameProf.Name = "BoxNameProf";
+            BoxNameProf.PlaceholderText = "Nombre";
+            BoxNameProf.Size = new Size(240, 32);
+            BoxNameProf.TabIndex = 2;
             // 
-            // BoxNewNameProf
-            // 
-            BoxNewNameProf.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            BoxNewNameProf.Location = new Point(193, 66);
-            BoxNewNameProf.Name = "BoxNewNameProf";
-            BoxNewNameProf.Size = new Size(240, 32);
-            BoxNewNameProf.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(35, 66);
-            label2.Name = "label2";
-            label2.Size = new Size(152, 28);
-            label2.TabIndex = 1;
-            label2.Text = "Nuevo Nombre:";
-            // 
-            // LabelNameProf
-            // 
-            LabelNameProf.AutoSize = true;
-            LabelNameProf.BackColor = Color.White;
-            LabelNameProf.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelNameProf.Location = new Point(20, 11);
-            LabelNameProf.Name = "LabelNameProf";
-            LabelNameProf.Size = new Size(145, 32);
-            LabelNameProf.TabIndex = 0;
-            LabelNameProf.Text = "NombreProf";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(-1, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(150, 28);
-            label1.TabIndex = 4;
-            label1.Text = "Buscar Profesor:";
-            // 
-            // ComboProfSearch
-            // 
-            ComboProfSearch.FormattingEnabled = true;
-            ComboProfSearch.Items.AddRange(new object[] { "José Luis", "Pedro Reyes", "Verkis Galvan", "José Santana" });
-            ComboProfSearch.Location = new Point(155, 5);
-            ComboProfSearch.Name = "ComboProfSearch";
-            ComboProfSearch.Size = new Size(503, 28);
-            ComboProfSearch.TabIndex = 5;
-            // 
-            // EditarProfesor
+            // RegistrarProf
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 40, 40);
-            ClientSize = new Size(896, 720);
-            Controls.Add(ComboProfSearch);
-            Controls.Add(label1);
+            ClientSize = new Size(903, 622);
             Controls.Add(PanelProfInfo);
-            Controls.Add(ButtonSearch);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
-            MinimizeBox = false;
-            MinimumSize = new Size(818, 497);
-            Name = "EditarProfesor";
-            ShowIcon = false;
+            Name = "RegistrarProf";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Editar Profesor";
+            Text = "Registrar Profesor";
             PanelProfInfo.ResumeLayout(false);
             PanelProfInfo.PerformLayout();
             panel3.ResumeLayout(false);
@@ -305,29 +220,23 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private Button ButtonSearch;
+
         private Panel PanelProfInfo;
-        private Label label1;
-        private ComboBox ComboProfSearch;
-        private Label LabelNameProf;
-        private Label label2;
-        private TextBox BoxNewNameProf;
-        private Label label3;
-        private TextBox BoxNewPassProf;
-        private CheckedListBox ListBAsigAcademicas;
-        private Label label4;
-        private Label label5;
-        private CheckedListBox ListBTecnicas;
-        private Panel panel1;
-        private Panel panel2;
+        private Button ButtonCancel;
+        private Button ButtonSave;
         private Panel panel3;
         private CheckedListBox ListBAsigTecnicas;
         private Label label6;
-        private Button ButtonSave;
-        private Button ButtonCancel;
+        private Panel panel2;
+        private CheckedListBox ListBAsigAcademicas;
+        private Label label4;
+        private Panel panel1;
+        private CheckedListBox ListBTecnicas;
+        private Label label5;
+        private TextBox BoxPassProf;
+        private TextBox BoxNameProf;
     }
 }

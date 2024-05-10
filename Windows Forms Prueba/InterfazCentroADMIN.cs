@@ -7,14 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using static System.Windows.Forms.DataFormats;
 
 namespace Windows_Forms_Prueba
 {
     public partial class InterfazCentroADMIN : Form
     {
+
+        public int DrawingX = 171;
+        public int DrawingY = 29;
+
+        public ToolStripMenuItem Logout = new ToolStripMenuItem("Cerrar Sesion");
+        public ToolStripMenuItem MenuInicio = new ToolStripMenuItem("Inicio");
+
         public InterfazCentroADMIN(string NombreFormActual, string UsuarioActual)
         {
             InitializeComponent();
+
+            LabelUserWelcome.Text = "¡Hola " + UsuarioActual + "!";
+
+            Logout.ForeColor = Color.White;
+            Logout.Enabled = true;
+            MenuInicio.ForeColor = Color.White;
+            MenuInicio.Enabled = true;
+            Logout.Click += new EventHandler(CambiarALogin_Click);
+
+            PanelWelcome.Location = new Point(DrawingX, DrawingY);
+            PanelStudents.Location = new Point(DrawingX, DrawingY);
+            PanelProfList.Location = new Point(DrawingX, DrawingY);
+            PanelCursoList.Location = new Point(DrawingX, DrawingY);
+            PanelListAsig.Location = new Point(DrawingX, DrawingY);
+            PanelStudentAccount.Location = new Point(DrawingX, DrawingY);
+            PanelCalRAs.Location = new Point(8, 163);
 
             if ((NombreFormActual != "") & (NombreFormActual != null))
             {
@@ -22,11 +47,107 @@ namespace Windows_Forms_Prueba
             }
             else
             {
-                this.Text = "Centro Educativo";
+                this.Text = "Centro Educativo - " + UsuarioActual;
+            }
+            
+            if (UsuarioActual == "ADMINPOMARAY")
+            {
+                LabelRole.Text = "Admin";
+            }
+            else if ((UsuarioActual == "Jose Luis") | (UsuarioActual == "Profesor")) {
+                LabelRole.Text = "Profesor";
+                MenuPag.Items.Clear();
+
+                ToolStripMenuItem EstudianteEl = new ToolStripMenuItem("Estudiantes");
+                EstudianteEl.ForeColor = Color.White;
+                EstudianteEl.Enabled = true;
+                MenuPag.Items.Add(MenuInicio);
+                MenuPag.Items.Add(EstudianteEl);
+                MenuPag.Items.Add(Logout);
+
+                ToolStripMenuItem StudentListEl = new ToolStripMenuItem("Lista de Estudiantes");
+                ToolStripMenuItem AddCalStudent = new ToolStripMenuItem("Registrar Nota A Estudiante");
+                StudentListEl.Click += new EventHandler(MostrarListaStudents_Click);
+                AddCalStudent.Click += new EventHandler(RegNotaEstudianteWindow_Click);
+                EstudianteEl.DropDownItems.Add(StudentListEl);
+                EstudianteEl.DropDownItems.Add(AddCalStudent);
+            }
+            else
+            {
+                LabelRole.Text = "Estudiante";
+                MenuPag.Items.Clear();
+                MenuPag.Items.Add(Logout);
+                NotVPanels();
+                PanelStudentAccount.Visible = true;
             }
 
-            LabelUserWelcome.Text = "¡Hola " + UsuarioActual + "!";
+        }
 
+        private void NotVPanels()
+        {
+            PanelWelcome.Visible = false;
+            PanelStudents.Visible = false;
+            PanelProfList.Visible = false;
+            PanelCursoList.Visible = false;
+            PanelListAsig.Visible = false;
+            PanelStudentAccount.Visible = false;
+        }
+
+        private void MostrarBienvenida_Click(object sender, EventArgs e)
+        {
+            NotVPanels();
+            PanelWelcome.Visible = true;
+        }
+
+        private void MostrarListaProfesores_Click(object sender, EventArgs e)
+        {
+            NotVPanels();
+            PanelProfList.Visible = true;
+        }
+
+        private void MostrarListaStudents_Click(object sender, EventArgs e)
+        {
+            NotVPanels();
+            PanelStudents.Visible = true;
+        }
+
+        private void MostrarListaClass_Click(object sender, EventArgs e)
+        {
+            NotVPanels();
+            PanelCursoList.Visible = true;
+        }
+
+        private void MostrarListaAsig_Click(object sender, EventArgs e)
+        {
+            NotVPanels();
+            PanelListAsig.Visible = true;
+        }
+
+        private void CerrarAsig()
+        {
+            DGVAcas.Visible = false;
+            PanelCalRAs.Visible = false;
+            DGVRAs.Visible = false;
+        }
+
+        private void VerCalAsig_TextUpdate(object sender, EventArgs e)
+        {
+
+            CerrarAsig();
+
+            if (ComboBElecAsig.Text == "Sociales")
+            {
+                DGVAcas.Visible = true;
+            }
+            else
+            {
+                PanelCalRAs.Visible = true;
+            }
+        }
+
+        private void VerRA_TextUpdate(object sender, EventArgs e)
+        {
+            DGVRAs.Visible = true;
         }
 
         private void CambiarALogin_Click(object sender, EventArgs e)
@@ -59,24 +180,45 @@ namespace Windows_Forms_Prueba
             }
         }
 
-
-        private void MostrarContenido(Panel contenido)
+        private void RegProfWindow_Click(object sender, EventArgs e)
         {
-            // Ocultar todos los controles
-            PanelWelcome.Visible = false;
-            PanelListProfs.Visible = false;
-            // Mostrar el contenido deseado
-            contenido.Visible = true;
+            try
+            {
+                //Abrir el Formulario de interfaz
+                RegistrarProf FormularioAbrir = new RegistrarProf();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
         }
 
-        private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RegEstudianteWindow_Click(object sender, EventArgs e)
         {
-            MostrarContenido(PanelWelcome);
+            try
+            {
+                //Abrir el Formulario de interfaz
+                RegistrarEstudiante FormularioAbrir = new RegistrarEstudiante();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
         }
 
-        private void ListProfsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RegNotaEstudianteWindow_Click(object sender, EventArgs e)
         {
-            MostrarContenido(PanelListProfs);
+            try
+            {
+                RegistrarNotaEstudiante FormularioAbrir = new RegistrarNotaEstudiante();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
         }
 
     }
