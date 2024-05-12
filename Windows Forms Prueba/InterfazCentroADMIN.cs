@@ -180,6 +180,48 @@ namespace Windows_Forms_Prueba
             }
         }
 
+        private void EditStudentWindow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Abrir el Formulario de interfaz
+                EditarEstudiante FormularioAbrir = new EditarEstudiante();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
+        }
+
+        private void EditCursoWindow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Abrir el Formulario de interfaz
+                EditarCurso FormularioAbrir = new EditarCurso();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
+        }
+
+        private void EditAsignaturaWindow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Abrir el Formulario de interfaz
+                EditarAsignatura FormularioAbrir = new EditarAsignatura();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
+        }
+
         private void RegProfWindow_Click(object sender, EventArgs e)
         {
             try
@@ -200,6 +242,34 @@ namespace Windows_Forms_Prueba
             {
                 //Abrir el Formulario de interfaz
                 RegistrarEstudiante FormularioAbrir = new RegistrarEstudiante();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
+        }
+
+        private void RegAsigWindow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Abrir el Formulario de interfaz
+                RegistrarAsignatura FormularioAbrir = new RegistrarAsignatura();
+                FormularioAbrir.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el nuevo formulario: " + ex.Message);
+            }
+        }
+
+        private void RegCursoWindow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Abrir el Formulario de interfaz
+                RegistrarCurso FormularioAbrir = new RegistrarCurso();
                 FormularioAbrir.Show();
             }
             catch (Exception ex)

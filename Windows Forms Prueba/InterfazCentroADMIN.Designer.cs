@@ -88,10 +88,14 @@
             CursoGrado = new DataGridViewTextBoxColumn();
             CursoTecnica = new DataGridViewTextBoxColumn();
             Número = new DataGridViewTextBoxColumn();
+            CanStudents = new DataGridViewTextBoxColumn();
+            ProfEncargado = new DataGridViewTextBoxColumn();
             PanelListAsig = new Panel();
             dataGridView3 = new DataGridView();
             AsigName = new DataGridViewTextBoxColumn();
             AsigTipo = new DataGridViewTextBoxColumn();
+            CanRAs = new DataGridViewTextBoxColumn();
+            TécnicaAsig = new DataGridViewTextBoxColumn();
             PanelStudentAccount = new Panel();
             panel5 = new Panel();
             PanelCalRAs = new Panel();
@@ -360,6 +364,7 @@
             editarEstudianteToolStripMenuItem.Name = "editarEstudianteToolStripMenuItem";
             editarEstudianteToolStripMenuItem.Size = new Size(224, 26);
             editarEstudianteToolStripMenuItem.Text = "Editar Estudiante";
+            editarEstudianteToolStripMenuItem.Click += EditStudentWindow_Click;
             // 
             // asignaturasToolStripMenuItem
             // 
@@ -381,12 +386,14 @@
             registrarAToolStripMenuItem.Name = "registrarAToolStripMenuItem";
             registrarAToolStripMenuItem.Size = new Size(226, 26);
             registrarAToolStripMenuItem.Text = "Registrar Asignatura";
+            registrarAToolStripMenuItem.Click += RegAsigWindow_Click;
             // 
             // eToolStripMenuItem
             // 
             eToolStripMenuItem.Name = "eToolStripMenuItem";
             eToolStripMenuItem.Size = new Size(226, 26);
             eToolStripMenuItem.Text = "Editar Asignatura";
+            eToolStripMenuItem.Click += EditAsignaturaWindow_Click;
             // 
             // MenuPag
             // 
@@ -420,21 +427,23 @@
             // listaDeCursosToolStripMenuItem
             // 
             listaDeCursosToolStripMenuItem.Name = "listaDeCursosToolStripMenuItem";
-            listaDeCursosToolStripMenuItem.Size = new Size(192, 26);
+            listaDeCursosToolStripMenuItem.Size = new Size(224, 26);
             listaDeCursosToolStripMenuItem.Text = "Lista de Cursos";
             listaDeCursosToolStripMenuItem.Click += MostrarListaClass_Click;
             // 
             // registrarCursoToolStripMenuItem
             // 
             registrarCursoToolStripMenuItem.Name = "registrarCursoToolStripMenuItem";
-            registrarCursoToolStripMenuItem.Size = new Size(192, 26);
+            registrarCursoToolStripMenuItem.Size = new Size(224, 26);
             registrarCursoToolStripMenuItem.Text = "Registrar Curso";
+            registrarCursoToolStripMenuItem.Click += RegCursoWindow_Click;
             // 
             // editarCursoToolStripMenuItem
             // 
             editarCursoToolStripMenuItem.Name = "editarCursoToolStripMenuItem";
-            editarCursoToolStripMenuItem.Size = new Size(192, 26);
+            editarCursoToolStripMenuItem.Size = new Size(224, 26);
             editarCursoToolStripMenuItem.Text = "Editar Curso";
+            editarCursoToolStripMenuItem.Click += EditCursoWindow_Click;
             // 
             // cerrarSesiónToolStripMenuItem
             // 
@@ -635,7 +644,7 @@
             PanelCursoList.Controls.Add(dataGridView1);
             PanelCursoList.Location = new Point(171, 822);
             PanelCursoList.Name = "PanelCursoList";
-            PanelCursoList.Size = new Size(458, 232);
+            PanelCursoList.Size = new Size(853, 232);
             PanelCursoList.TabIndex = 20;
             PanelCursoList.Visible = false;
             // 
@@ -644,13 +653,13 @@
             dataGridView1.BackgroundColor = Color.FromArgb(40, 40, 40);
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CursoGrado, CursoTecnica, Número });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CursoGrado, CursoTecnica, Número, CanStudents, ProfEncargado });
             dataGridView1.Location = new Point(3, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 28;
-            dataGridView1.Size = new Size(451, 139);
+            dataGridView1.Size = new Size(843, 139);
             dataGridView1.TabIndex = 1;
             // 
             // CursoGrado
@@ -677,12 +686,28 @@
             Número.ReadOnly = true;
             Número.Width = 150;
             // 
+            // CanStudents
+            // 
+            CanStudents.HeaderText = "Cantidad de Estudiantes";
+            CanStudents.MinimumWidth = 6;
+            CanStudents.Name = "CanStudents";
+            CanStudents.ReadOnly = true;
+            CanStudents.Width = 200;
+            // 
+            // ProfEncargado
+            // 
+            ProfEncargado.HeaderText = "Profesor Encargado";
+            ProfEncargado.MinimumWidth = 6;
+            ProfEncargado.Name = "ProfEncargado";
+            ProfEncargado.ReadOnly = true;
+            ProfEncargado.Width = 190;
+            // 
             // PanelListAsig
             // 
             PanelListAsig.Controls.Add(dataGridView3);
-            PanelListAsig.Location = new Point(635, 822);
+            PanelListAsig.Location = new Point(1038, 822);
             PanelListAsig.Name = "PanelListAsig";
-            PanelListAsig.Size = new Size(567, 232);
+            PanelListAsig.Size = new Size(723, 232);
             PanelListAsig.TabIndex = 21;
             PanelListAsig.Visible = false;
             // 
@@ -691,13 +716,13 @@
             dataGridView3.BackgroundColor = Color.FromArgb(40, 40, 40);
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { AsigName, AsigTipo });
+            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { AsigName, AsigTipo, CanRAs, TécnicaAsig });
             dataGridView3.Location = new Point(3, 0);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.ReadOnly = true;
             dataGridView3.RowHeadersWidth = 51;
             dataGridView3.RowTemplate.Height = 28;
-            dataGridView3.Size = new Size(451, 139);
+            dataGridView3.Size = new Size(556, 139);
             dataGridView3.TabIndex = 1;
             // 
             // AsigName
@@ -716,6 +741,22 @@
             AsigTipo.ReadOnly = true;
             AsigTipo.Width = 125;
             // 
+            // CanRAs
+            // 
+            CanRAs.HeaderText = "RAs";
+            CanRAs.MinimumWidth = 6;
+            CanRAs.Name = "CanRAs";
+            CanRAs.ReadOnly = true;
+            CanRAs.Width = 125;
+            // 
+            // TécnicaAsig
+            // 
+            TécnicaAsig.HeaderText = "Técnica";
+            TécnicaAsig.MinimumWidth = 6;
+            TécnicaAsig.Name = "TécnicaAsig";
+            TécnicaAsig.ReadOnly = true;
+            TécnicaAsig.Width = 125;
+            // 
             // PanelStudentAccount
             // 
             PanelStudentAccount.BackColor = Color.Transparent;
@@ -724,7 +765,7 @@
             PanelStudentAccount.Controls.Add(label14);
             PanelStudentAccount.Controls.Add(label15);
             PanelStudentAccount.Controls.Add(label16);
-            PanelStudentAccount.Location = new Point(1305, 448);
+            PanelStudentAccount.Location = new Point(1767, 448);
             PanelStudentAccount.Name = "PanelStudentAccount";
             PanelStudentAccount.Size = new Size(1704, 951);
             PanelStudentAccount.TabIndex = 24;
@@ -1158,9 +1199,6 @@
         private DataGridViewTextBoxColumn ProfClasesTecnicas;
         private Panel PanelCursoList;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn CursoGrado;
-        private DataGridViewTextBoxColumn CursoTecnica;
-        private DataGridViewTextBoxColumn Número;
         private Panel PanelListAsig;
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn AsigName;
@@ -1198,5 +1236,13 @@
         private Label label14;
         private Label label15;
         private Label label16;
+        private ToolStripMenuItem dsawToolStripMenuItem;
+        private DataGridViewTextBoxColumn CanRAs;
+        private DataGridViewTextBoxColumn CursoGrado;
+        private DataGridViewTextBoxColumn CursoTecnica;
+        private DataGridViewTextBoxColumn Número;
+        private DataGridViewTextBoxColumn CanStudents;
+        private DataGridViewTextBoxColumn ProfEncargado;
+        private DataGridViewTextBoxColumn TécnicaAsig;
     }
 }

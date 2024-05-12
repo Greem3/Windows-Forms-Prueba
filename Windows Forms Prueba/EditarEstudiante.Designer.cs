@@ -45,6 +45,8 @@
             ComboStudentSearch = new ComboBox();
             label6 = new Label();
             ButtonSearch = new Button();
+            label7 = new Label();
+            ComboBStudentTecnicaSearch = new ComboBox();
             PanelEditStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUPNewLista).BeginInit();
             SuspendLayout();
@@ -64,7 +66,7 @@
             PanelEditStudent.Controls.Add(ButtonRegistrar);
             PanelEditStudent.Controls.Add(BoxNewStudentPass);
             PanelEditStudent.Controls.Add(BoxNewStudentName);
-            PanelEditStudent.Location = new Point(12, 53);
+            PanelEditStudent.Location = new Point(12, 86);
             PanelEditStudent.Name = "PanelEditStudent";
             PanelEditStudent.Size = new Size(785, 405);
             PanelEditStudent.TabIndex = 7;
@@ -176,6 +178,7 @@
             ButtonCancel.TabIndex = 13;
             ButtonCancel.Text = "Cancelar";
             ButtonCancel.UseVisualStyleBackColor = true;
+            ButtonCancel.Click += CancelStudent_Click;
             // 
             // ButtonRegistrar
             // 
@@ -185,6 +188,7 @@
             ButtonRegistrar.TabIndex = 12;
             ButtonRegistrar.Text = "Guardar";
             ButtonRegistrar.UseVisualStyleBackColor = true;
+            ButtonRegistrar.Click += BuscarStudent_Click;
             // 
             // BoxNewStudentPass
             // 
@@ -229,20 +233,43 @@
             // 
             ButtonSearch.BackColor = Color.Transparent;
             ButtonSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonSearch.Location = new Point(661, 0);
+            ButtonSearch.Location = new Point(661, 43);
             ButtonSearch.Name = "ButtonSearch";
             ButtonSearch.Size = new Size(136, 31);
             ButtonSearch.TabIndex = 8;
             ButtonSearch.Text = "Buscar";
             ButtonSearch.TextAlign = ContentAlignment.TopCenter;
             ButtonSearch.UseVisualStyleBackColor = false;
+            ButtonSearch.Click += BuscarStudent_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ControlLightLight;
+            label7.Location = new Point(87, 43);
+            label7.Name = "label7";
+            label7.Size = new Size(78, 28);
+            label7.TabIndex = 11;
+            label7.Text = "Técnica:";
+            // 
+            // ComboBStudentTecnicaSearch
+            // 
+            ComboBStudentTecnicaSearch.FormattingEnabled = true;
+            ComboBStudentTecnicaSearch.Items.AddRange(new object[] { "Diseño y Administración de Sistemas Informáticos" });
+            ComboBStudentTecnicaSearch.Location = new Point(171, 46);
+            ComboBStudentTecnicaSearch.Name = "ComboBStudentTecnicaSearch";
+            ComboBStudentTecnicaSearch.Size = new Size(484, 28);
+            ComboBStudentTecnicaSearch.TabIndex = 12;
             // 
             // EditarEstudiante
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 40, 40);
-            ClientSize = new Size(799, 460);
+            ClientSize = new Size(799, 503);
+            Controls.Add(ComboBStudentTecnicaSearch);
+            Controls.Add(label7);
             Controls.Add(ComboStudentSearch);
             Controls.Add(label6);
             Controls.Add(ButtonSearch);
@@ -276,5 +303,7 @@
         private Label label6;
         private Button ButtonSearch;
         private Label LabelNameStudent;
+        private Label label7;
+        private ComboBox ComboBStudentTecnicaSearch;
     }
 }

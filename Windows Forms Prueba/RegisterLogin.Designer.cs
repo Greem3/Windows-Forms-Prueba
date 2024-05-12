@@ -63,7 +63,7 @@
             // BoxRegPass
             // 
             BoxRegPass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            BoxRegPass.Location = new Point(680, 557);
+            BoxRegPass.Location = new Point(1042, 484);
             BoxRegPass.Name = "BoxRegPass";
             BoxRegPass.PasswordChar = '*';
             BoxRegPass.PlaceholderText = "Contraseña";
@@ -73,7 +73,7 @@
             // BoxRegUbicacion
             // 
             BoxRegUbicacion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            BoxRegUbicacion.Location = new Point(1042, 484);
+            BoxRegUbicacion.Location = new Point(680, 557);
             BoxRegUbicacion.Name = "BoxRegUbicacion";
             BoxRegUbicacion.PlaceholderText = "Ubicación";
             BoxRegUbicacion.Size = new Size(307, 34);

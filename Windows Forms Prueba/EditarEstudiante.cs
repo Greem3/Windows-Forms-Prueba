@@ -21,6 +21,7 @@ namespace Windows_Forms_Prueba
         {
             LabelNameStudent.Text = ComboStudentSearch.Text;
             BoxNewStudentName.Text = ComboStudentSearch.Text;
+            ComboBNewStudentTecnica.Text = ComboBStudentTecnicaSearch.Text;
             PanelEditStudent.Visible = true;
         }
 
